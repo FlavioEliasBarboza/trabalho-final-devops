@@ -1,5 +1,5 @@
 from bronze import bronze_ingestion
-from silver import silver_transform
+from silver import *
 from config import config
 
 if __name__ == "__main__":
@@ -9,4 +9,7 @@ if __name__ == "__main__":
         bronze_ingestion(config, i)
 
     # Tratamento Silver 
-    silver_transform()
+    silver_transform_peoples()
+    
+    #silver_transform_planets()
+    #silver_transform_films()
