@@ -8,8 +8,9 @@ if __name__ == "__main__":
     for i in range(1,10):
         bronze_ingestion(config, i)
 
-    # Tratamento Silver 
-    silver_transform_peoples()
-    
-    #silver_transform_planets()
-    #silver_transform_films()
+    # Carregamento Silver 
+    silver_transform('peoples')
+    silver_transform('planets')
+    silver_transform('films')
+
+    # Carregamento Gold 

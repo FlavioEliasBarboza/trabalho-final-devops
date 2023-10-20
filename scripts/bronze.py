@@ -17,5 +17,5 @@ def bronze_ingestion(config, page):
             with open(arq_name, "w") as outfile:
                 outfile.write(content_serialized)
 
-            grava_log('./data/logs/bronze.log', f"Arquivo {arq_name} gravado com sucesso!")
+            grava_log('./data/logs/bronze.csv', f"Arquivo {arq_name} gravado com sucesso!")
 
