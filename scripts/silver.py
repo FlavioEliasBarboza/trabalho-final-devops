@@ -1,5 +1,4 @@
 import pandas as pd
-from datetime import datetime
 from log import grava_log 
 
 def transform_files_in_df(path):
@@ -37,6 +36,6 @@ def silver_transform(object):
     df = df.drop_duplicates()
 
     df.to_csv(arq_dest_name, index=False)
-    grava_log('./data/logs/silver.csv', f"Arquivo {arq_dest_name} gravado com sucesso!")
+    grava_log("INFO", 'silver_transform', f"Arquivo {arq_dest_name} gravado com sucesso!")
 
     return True
