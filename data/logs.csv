@@ -1,3 +1,12 @@
 datetime,type,function,message
 2023-10-20 08:34:28,INFO,silver_transform,Arquivo ./data/silver/peoples.csv gravado com sucesso!
 2023-10-20 08:34:33,INFO,silver_transform,Arquivo ./data/silver/peoples.csv gravado com sucesso!
+2023-10-20 08:44:59,INFO,silver_transform,Arquivo ./data/silver/peoples.csv gravado com sucesso!
+2023-10-20 08:45:19,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:45:49,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:46:20,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:48:35,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:48:58,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:50:25,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 08:59:36,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-20 09:01:52,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!

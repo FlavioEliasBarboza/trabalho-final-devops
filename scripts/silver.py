@@ -7,6 +7,9 @@ def transform_files_in_df(path):
     df_list = [pd.read_json(file) for file in filelist]
     return pd.concat(df_list)
 
+def sanitize_text(df):
+    return df.replace('\n', ' ', regex=True).replace('\r', ' ', regex=True)
+
 def rename_fields(df, path_metadado):
 
     df_meta = pd.read_excel(path_metadado)
@@ -19,9 +22,9 @@ def transform_to_string_and_null(df):
     columns_string = df.select_dtypes(include="object")
     columns_numeric = df.select_dtypes(include=['float64', 'int64'])
     columns_date = df.select_dtypes(include=['datetime', 'datetime64', 'datetime64[ns]', 'datetimetz'])
-    df[columns_string.columns] = df[columns_string.columns].fillna('').astype(str)
-    df[columns_numeric.columns] = df[columns_numeric.columns].astype(str).replace('<NA>', '')
-    df[columns_date.columns] = df[columns_date.columns].astype(str)
+    df[columns_string.columns] = df[columns_string.columns].fillna('NULL').astype(str)
+    df[columns_numeric.columns] = df[columns_numeric.columns].astype(str).replace('<NA>', 'NULL')
+    df[columns_date.columns] = df[columns_date.columns].astype(str).fillna('NULL')
     return df   
 
 def silver_transform(object):
@@ -32,6 +35,7 @@ def silver_transform(object):
 
     df = transform_files_in_df(arq_ori_name)
     df = transform_to_string_and_null(df)
+    df = sanitize_text(df)
     df = rename_fields(df, path_metadado)
     df = df.drop_duplicates()
 
@@ -39,3 +43,7 @@ def silver_transform(object):
     grava_log("INFO", 'silver_transform', f"Arquivo {arq_dest_name} gravado com sucesso!")
 
     return True
+
+
+if __name__ == "__main__":
+    silver_transform('films')
