@@ -1,5 +1,5 @@
 from bronze import bronze_ingestion
-from silver import *
+from silver import silver_transform
 from gold import gold_transform
 from config import config
 
