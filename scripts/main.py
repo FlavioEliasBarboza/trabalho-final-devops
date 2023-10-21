@@ -1,5 +1,6 @@
 from bronze import bronze_ingestion
 from silver import *
+from gold import gold_transform
 from config import config
 
 if __name__ == "__main__":
@@ -14,3 +15,4 @@ if __name__ == "__main__":
     silver_transform('films')
 
     # Carregamento Gold 
+    gold_transform()
