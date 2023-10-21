@@ -27,9 +27,6 @@ def verify_duplicates_key(df, path, object):
         if(len(df[column].unique()) != len(df[column])):
             raise Exception(f"Erro na tabela '{object}': Coluna Chave '{column}' contem duplicadas!")
 
-
-    return df
-
 def verify_not_null_fields(df, path, object):
 
     df_meta = pd.read_excel(path)
@@ -39,16 +36,14 @@ def verify_not_null_fields(df, path, object):
         if(len(df[df[column].isna()]) > 0):
             raise Exception(f"Erro na tabela '{object}': Coluna '{column}' não permite nulos!")
 
-    return df
-
-def transform_null_values(df, path, object):
-    df_meta = pd.read_excel(path)
+def transform_null_values(df, object):
     try:
-        for column in df_meta['nome_original']:
-            df[column].replace("", None, regex=True, inplace = True)
-            df[column].replace("unknown", None, regex=True, inplace = True)
-            df[column].replace("n/a", None, regex=True, inplace = True)
-            df[column].replace("<NA>", None, regex=True, inplace = True)
+
+        df.replace("", None, regex=True, inplace = True)
+        df.replace("unknown", None, regex=True, inplace = True)
+        df.replace("n/a", None, regex=True, inplace = True)
+        df.replace("<NA>", None, regex=True, inplace = True)
+
         return df
     except Exception as e:
         grava_log("ERRO", 'transform_null_values', f"Erro no objeto {object}: {e}")
@@ -64,11 +59,11 @@ def silver_transform(object):
 
     df = transform_files_in_df(arq_ori_name)
     df = transform_to_string(df)
-    df = transform_null_values(df, path_metadado, object)
+    df = transform_null_values(df, object)
     df = transform_text(df)
 
-    df = verify_not_null_fields(df, path_metadado, object)
-    df = verify_duplicates_key(df, path_metadado, object)
+    verify_not_null_fields(df, path_metadado, object)
+    verify_duplicates_key(df, path_metadado, object)
 
     df = rename_fields(df, path_metadado)
     df = df.drop_duplicates()

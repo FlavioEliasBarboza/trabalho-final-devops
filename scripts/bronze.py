@@ -7,15 +7,19 @@ def bronze_ingestion(config, page):
 
     for item in config:
         
-        response = requests.get(f"{item['url']}?page={page}")
-        content = json.loads(response.content.decode("utf-8"))
+        try:
 
-        if(content.get('results')):
-            content_serialized = json.dumps(content['results'], indent=4)
+            response = requests.get(f"{item['url']}?page={page}")
+            content = json.loads(response.content.decode("utf-8"))
 
-            arq_name = item['bronze'].replace('#', str(page))
-            with open(arq_name, "w") as outfile:
-                outfile.write(content_serialized)
+            if(content.get('results')):
+                content_serialized = json.dumps(content['results'], indent=4)
 
-            grava_log('INFO', 'bronze_ingestion', f"Arquivo {arq_name} gravado com sucesso!")
+                arq_name = item['bronze'].replace('#', str(page))
+                with open(arq_name, "w") as outfile:
+                    outfile.write(content_serialized)
 
+                grava_log('INFO', 'bronze_ingestion', f"Arquivo {arq_name} gravado com sucesso!")
+
+        except Exception as e:
+            grava_log("ERRO", 'bronze_ingestion', f"Erro na ingestão: {e}")
