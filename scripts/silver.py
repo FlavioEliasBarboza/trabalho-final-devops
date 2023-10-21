@@ -68,7 +68,7 @@ def silver_transform(object):
     df = rename_fields(df, path_metadado)
     df = df.drop_duplicates()
 
-    df.to_csv(arq_dest_name, index=False)
+    df.to_csv(arq_dest_name, sep=';', index=False)
     grava_log("INFO", 'silver_transform', f"Arquivo {arq_dest_name} gravado com sucesso!")
 
     return True

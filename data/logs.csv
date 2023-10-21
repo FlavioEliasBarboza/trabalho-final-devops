@@ -142,3 +142,6 @@ datetime,type,function,message
 2023-10-21 11:19:02,INFO,silver_transform,Arquivo ./data/silver/peoples.csv gravado com sucesso!
 2023-10-21 11:19:03,INFO,silver_transform,Arquivo ./data/silver/planets.csv gravado com sucesso!
 2023-10-21 11:19:03,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
+2023-10-21 19:13:35,INFO,silver_transform,Arquivo ./data/silver/peoples.csv gravado com sucesso!
+2023-10-21 19:13:35,INFO,silver_transform,Arquivo ./data/silver/planets.csv gravado com sucesso!
+2023-10-21 19:13:35,INFO,silver_transform,Arquivo ./data/silver/films.csv gravado com sucesso!
